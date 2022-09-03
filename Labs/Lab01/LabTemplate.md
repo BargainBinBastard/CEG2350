@@ -1,7 +1,7 @@
 ## Lab 01
 
-- Name:
-- Email:
+- Name: Robert Croop
+- Email: croop.2@wright.edu
 
 ## Part 1 Answers
 
