@@ -1,4 +1,4 @@
-# Lab 03 - NOT FINALIZED
+# Lab 03
 
 - [Lab Procedure](#Lab-Procedure)
 - [Part 1 - IO Redirection](#Part-1---IO-Redirection)
@@ -75,6 +75,7 @@ This and the following parts are meant to be done in your AWS instance in your `
 
    - Reads in a filename as an argument.
      - Runs with `sorting-party filename`
+     - Note: this will look a little different depending on file permissions and the state of PATH
    - Sorts the contents of the file given in the argument using the `sort` command.
    - Outputs the sorted data to a file called `sorted.txt`
 
@@ -82,7 +83,7 @@ This and the following parts are meant to be done in your AWS instance in your `
 
 - **Resources:**
 - [Command Line Arguments in Shell Script](https://tecadmin.net/tutorial/bash-scripting/bash-command-arguments/)
-- [Use Command Line Arguents in Bash Script](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script)
+- [Use Command Line Arguments in Bash Script](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script)
 - [Positional Parameters](http://linuxcommand.org/lc3_wss0120.php)
 
 ## Part 3 - Intro to Regular Expressions
@@ -99,7 +100,7 @@ This and the following parts are meant to be done in your AWS instance in your `
 ## Part 4 - Docs and Repos
 
 1. Fill in the "Script Usage Guide" section with at least the specified elements
-   - You are welcome to replace this with any additonal markdown you would like to make it look good
+   - You are welcome to replace this with any additional markdown you would like to make it look good
 2. Verify that your GitHub repo has a `Lab03` folder with:
    - `input.txt`
    - `output.txt`
@@ -107,6 +108,8 @@ This and the following parts are meant to be done in your AWS instance in your `
    - `Lab03.md`
 
 ## Part 5 - .profile and PATH
+
+In this part, your task is to read `~/.profile` and focus on the `if` statements that change the value of `PATH`.  Your goal is to create the things needed for **one** of the conditions to evaluate to `true`.  Right now, both evaluate to `false`.  Remember, the `test` command is what is being used when you see `[` (square brackets).  The flag / relational condition being checked is an option of the `test` command.
 
 1. What is the value of the `PATH` environment variable?
 

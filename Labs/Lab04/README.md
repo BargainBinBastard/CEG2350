@@ -1,4 +1,4 @@
-# Lab 04 - NOT FINALIZED
+# Lab 04
 
 - [Lab Procedure](#Lab-Procedure)
 - [regex resources](#regex-resources)
@@ -10,7 +10,7 @@
 
 ## Lab Procedure
 
-[Return to here and select "Start Lab"](https://awsacademy.instructure.com/courses/13249/modules/items/1136419)
+[Return to here and select "Start Lab"](https://awsacademy.instructure.com/courses/24167/modules/items/1982401)
 
 Use `ssh` to connect to your AWS Ubuntu instance.
 
@@ -20,15 +20,17 @@ Create a new directory, `Lab04`
 
 This lab will have you creating input files, scripts, and output files. All of your work should be found here.
 
-Some questions will need you to write anwers in `Lab04.md` the [LabTemplate.md is here](LabTemplate.md).
+Some questions will need you to write answers in `Lab04.md` the [LabTemplate.md is here](LabTemplate.md).
 
-- [Raw version of LabTemplate.md](https://raw.githubusercontent.com/pattonsgirl/Spring2022-CEG2350/main/Labs/Lab04/LabTemplate.md)
+- [Raw version of LabTemplate.md](https://raw.githubusercontent.com/pattonsgirl/CEG2350/main/Labs/Lab04/LabTemplate.md)
 
 For each part below, you will be asked to do an action or answer a question. The actions are going to be commands - you will write the command you used as "answers" to the action requested. You are allowed to use multiple commands to solve an action. Just write down all that were needed to complete. Check with the TAs if you need clarification.
 
 If you did something "wrong" make a note of it in your lab. These are learning experiences - writing them down will help you ask good questions later.
 
 ## regex resources
+
+These are useful resources for remembering regex syntax and testing your expressions against smaller cases (regex 101 is recommended).
 
 - [Mozilla - regex cheatsheet](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet)
 - [regexone - practice regex patterns](https://regexone.com/)
@@ -37,30 +39,38 @@ If you did something "wrong" make a note of it in your lab. These are learning e
 
 ## Part 1 - grep
 
-`grep` is a handy command to find patterns in text. `egrep` is `grep`, but allows for extended regex patterns. If a regex search with `grep` is misbehaving, you may need to use `grep -e` or `egrep`, OR enable POSIX regex using the `-P` option
+`grep` is a handy command to find patterns in text. With played with two flags in class: `-E` and `-P`. `-E` handles most things, but does not work with special regex letter the represent ranges -`\w` and `\d` for example. To use these characters for the ranges they represent, use the `-P` flag instead of the `-E` flag.
 
 ```
 grep [OPTIONS] PATTERN [FILE...]
 ```
 
-Create a file named `grepdata.txt` in your `Lab04` folder. Put the contents of [grepdata.txt](grepdata.txt) in the file. Use `grep` or `egrep` to complete the searches below. Only write the command that makes the required match. DO NOT paste the results.
+Create a file named `grepdata.txt` in your `Lab04` folder. Put the contents of [grepdata.txt](grepdata.txt) in the file. Use `grep` to complete the searches below. Only write the command that makes the required match. DO NOT paste the results.
 
-1. Print all lines that contain a phone number with an extension (the letter x or X followed by four digits).
+1. Print only lines that contain a phone number with an extension (the letter x or X followed by four digits).
    - Your answer must use the \{ and \} repetition specifier.
-2. Print all lines that begin with three digits followed by a blank.
-   - Your answer must use the \{ and \} repetition specifier.
-3. Print all lines that contain a date after the year 2000.
-4. Print all lines that contain CA in either uppercase or lowercase.
-5. Print all lines that contain an email address (they have an @ in them), preceded by the line number (as in which line the match occured on).
+2. Print only lines that contain CA in either uppercase or lowercase.
+3. Print only lines that contain an email address.
+4. Print only lines that contain a date after the year 2000.
 
 - **Resources**
 - [linuxize - use grep to search patterns](https://linuxize.com/post/how-to-use-grep-command-to-search-files-in-linux/)
+- [RedHat - Beginners Guide to regular expressions with grep](https://developers.redhat.com/articles/2022/09/14/beginners-guide-regular-expressions-grep#)
 
 ## Part 2 - sed
 
-`sed` is mostly commonly used as a search and replace command. In [sedfile.html](sedfile.html) you'll find a simple html file. But we want to change it into markdown. Your task is to do this only using `sed` commands. Your fixed file should be named `sedfile.md`.
+`sed` is mostly commonly used as a search and replace command. In [sedfile.html](sedfile.html) you'll find a simple html file. Your task is to change it into markdown. Do this only using `sed` commands. Your final to-markdown file should be named `sedfile.md`.
 
-I recommend using `sed` without modifying the file at first - once you know your replacement patterns work, then edit the file.
+The following picture shows how `sedfile.html` (the original) looks compared to `sedfile.md`
+
+![sed Before and After](sed-before-after.PNG)
+
+I recommend using `sed` without modifying the file at first - once you know your replacement patterns work, then save the changes to an output file.
+
+```
+sed -i 's/SEARCH_REGEX/REPLACEMENT/g' INPUTFILE
+# -i option tells sed to edit files in place. If an extension is supplied (ex -i.bak), a backup of the original file is created
+```
 
 Only write the command that performs the required task. DO NOT paste the results.
 
@@ -95,8 +105,7 @@ Only write the command that performs the required task. DO NOT paste the results
    - `Last, First: Email`
 4. For users who have a `wright.edu` email AND have a password of `1234`, print only their last name and favorite number in the following format:
    - `Last favorite number is: #`
-5. Replace emails from domain `space.edu` with `universe.edu`. Write all records to `update1.txt`
-6. Replace all passwords with `N0T@PL@!NP@$$W0RD`. Write all records to `update2.txt`
+5. Replace all passwords with `N0T@PL@!NP@$$W0RD`. Write all records to `updaterecords.txt`
 
 - **Resources**
 - [linuxize - awk with examples](https://linuxize.com/post/awk-command/)
@@ -110,8 +119,7 @@ Only write the command that performs the required task. DO NOT paste the results
    - `sedfile.html`
    - `sedfile.md`
    - `records.txt`
-   - `update1.txt`
-   - `update2.txt`
+   - `updaterecords`
    - `Lab04.md`
 
 2. In the Pilot Dropbox, paste the URL to the `Lab04` folder in your GitHub repo
@@ -123,6 +131,6 @@ Only write the command that performs the required task. DO NOT paste the results
 - Part 2 - 1 pt per question
 - Part 3 - 1 pt per question
 
-## Credit
+## Credit & inspiration
 
 - grep exercises: http://evc-cit.info/cit052/grep1.html

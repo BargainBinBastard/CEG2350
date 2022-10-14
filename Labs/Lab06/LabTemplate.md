@@ -1,22 +1,21 @@
 ## Lab 06
 
 - Name:
-- Email
+- Email:
 
 ## Part 1 Answers
 
-1. Steps to configure virtual hardware:
-2. ![Screenshot of VM settings](relative_path_to_filename_here)
-3. Steps to download an iso:
-4. Steps to use iso on VM:
-5. Steps to install your distribution:
-6. Steps to boot to disk after install:
-7. Steps to install "Guest Additions" & enable fullscreen mode:
-8. ![Screenshot of VM running](relative_path_to_filename_here)
+1. CPU
+2. GPU
+3. Physical memory
+4. Virtual memory
+5. Disk type / model
+6. Total disk size
+7. Remaining space
+8. File system
+9. BIOS / UEFI
+10. BIOS / UEFI access
 
-## Part 2 Answers
+## Extra Credit - VM Manager
 
-1.
-2.
-3.
-4.
+- Write here what VM Manager software you installed
