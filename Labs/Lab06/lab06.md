@@ -12,9 +12,9 @@
 5. Disk type / model: Both an ssd and an hdd are present.
 6. Total disk size: C: has 220.02 GB, D: has 931.39 GB
 7. Remaining space: C: has 54.85 GB remaining, D: has 931.26 GB remaining
-8. File system
-9. BIOS / UEFI
-10. BIOS / UEFI access
+8. File system: NTFS
+9. BIOS / UEFI: Dell. Inc 1.18.0. UEFI mode.
+10. BIOS / UEFI access: I cannot access my BIOS.
 
 ## Extra Credit - VM Manager
 
