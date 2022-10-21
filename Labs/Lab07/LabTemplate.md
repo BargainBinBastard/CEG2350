@@ -7,7 +7,7 @@
 
 1. Steps to configure virtual hardware: Dropdown menus allowed me to set up the name, type, and version of the system. Enabling "expert mode" allowed me to change the disk size. I could edit the ram, but was unable to get the format to "GB", so i set it to 2000 MB.
 2. ![Screenshot of VM settings](virtualmachinesettings.JPG)
-3. Steps to download an ISO:
+3. Steps to download an ISO: Googled "ubunntu desktop ISO" and found the ISo download in the official ubuntu page.
 4. Steps to use ISO on VM:
 5. Steps to install your distribution:
 6. Steps to boot to disk after install:
