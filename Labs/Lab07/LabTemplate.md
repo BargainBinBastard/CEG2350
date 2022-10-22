@@ -12,7 +12,7 @@
 5. Steps to install your distribution: When I booted after putting in the disk, an install wizard popped up, which I followed.
 6. Steps to boot to disk after install: Remove virtual disk from slot.
 7. Steps to use full screen mode: Select "full screen mode" under "view"
-8. ![Screenshot of VM running](machienrunning.JPG)
+8. ![Screenshot of VM running](machinerunning.JPG)
 
 ## Part 2 Answers
 
