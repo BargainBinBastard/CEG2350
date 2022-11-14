@@ -9,11 +9,11 @@
 
 ## Part 2 Answers
 
-1. Compiler:
-   - Location:
-   - Version:
-2. Command to compile:
-3. Command to run:
+1. Compiler: javac
+   - Location: /usr/lib/jvm
+   - Version: 11.0.17
+2. Command to compile: javac repeat.java
+3. Command to run: java repeat.java
 
 - Add your compiled code to your Lab10 folder in GitHub
 
