@@ -5,13 +5,13 @@
 
 ## Part 1 Answers
 
-1. Hostname of the device:
+1. Hostname of the device: DESKTOP-T2OOBCP
 2. MAC address of the NIC connected to the network:
-3. IP address:
-4. Subnet mask:
-5. Gateway address:
-6. DHCP server address:
-7. DNS server address:
+3. IP address: 130.108.220.148
+4. Subnet mask: 255.255.252.0
+5. Gateway address: 130.180.220.1
+6. DHCP server address:192.168.151.43
+7. DNS server address: 130.108.128.200
 8. Public IP used for communications outside subnet:
 
 ## Part 2 Answers
