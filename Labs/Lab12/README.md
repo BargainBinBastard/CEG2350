@@ -1,11 +1,11 @@
 # Lab 12
 
 - [Lab Procedure](#Lab-Procedure)
-- [Part 1 - tar it up](##Part-1---tar-it-up)
-- [Part 2 - SFTP](##Part-2---SFTP)
-- [Part 3 - ssh keys](##Part-3---ssh-keys)
-- [Part 4 - Firewall](##Part-4---Firewall)
-- [Extra Credit - Solving Conflict](##Extra-Credit---Solving-Conflict)
+- [Part 1 - tar it up](#Part-1---tar-it-up)
+- [Part 2 - SFTP](#Part-2---SFTP)
+- [Part 3 - ssh keys](#Part-3---ssh-keys)
+- [Part 4 - Firewall](#Part-4---Firewall)
+- [Extra Credit - Solving Conflict](#Extra-Credit---Solving-Conflict)
 - [Submission](#Submission)
 - [Rubric](#Rubric)
 - [Troubleshooting](#Troubleshooting)
@@ -39,11 +39,12 @@ Since we are wrapping up the semester, it's time to save your work and turn thin
    - `-f`
    - `-z`
    - `-x`
-2. Create a tarball (`tar` and compress) folders of your choice. Write the command you used. You will not be committing this to GitHub - it does not need to be in your repository folder.
+2. `tar` and compress folders of your choice. Write the command you used. You will not be committing this to GitHub - it does not need to be in your repository folder.
 
 - **Resources**
 - [cyberciti - tar on the command line](https://www.cyberciti.biz/faq/how-to-tar-a-file-in-linux-using-command-line/)
 - [tecmint - tar command examples](https://www.tecmint.com/18-tar-command-examples-in-linux/)
+- [Linux for Devices - Understanding the tar Command in Linux](https://www.linuxfordevices.com/tutorials/linux/tar-command-in-linux)
 
 ## Part 2 - SFTP
 
@@ -56,8 +57,8 @@ On your instance, you created a compressed set of stuff to save, but how do you 
    - `lls`
    - `put`
    - `get`
-3. Retrieve the tarball (`.tar.gz`) from your AWS instance and download it to your local system
-4. Uncompress the tarball (`.tar.gz`) to a folder on your system (you can remove it after you get the command right, I'm not a space hog)
+3. Retrieve the `tar` and compressed file (`.tar.gz`) from your AWS instance and download it to your local system
+4. Uncompress the `tar` and compressed file (`.tar.gz`) to a folder on your system (you can remove it after you get the command right, I'm not a space hog)
 
 - **Resources**
 - [DigitalOcean - how to use sftp](https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server)
@@ -70,12 +71,12 @@ Without practice, `ssh` connections and authentication just seem like magic. Rea
 
 1. On your AWS instance, create a new user
    - In pretend world, this is your company's IT guys making you an account
-2. On your system, make a new key pair - you choose the name and location.
+2. On your local system, make a new key pair - you choose the name and location.
    - In pretend world, this is you making your key pair - your private key will only be accessible by you. The public key is shared with accounts on systems you have access to.
      - Also note, normally you would either need to send IT your public key OR they would generate the key, and send you the private key.
-3. Put the public key of the key pair you just made in the new user's `~/.ssh/authorized_keys` file
+3. Put the public key of the key pair you just made in the new user's `~/.ssh/authorized_keys` file on the AWS instance
    - You have now set up SSH authentication to your account on (pretend) the new system!
-4. From your system, `ssh` in to the AWS instance using the new user's username and the private key you generated.
+4. From your local system, `ssh` in to the AWS instance using the new user's username and the private key you generated.
    - And now (in pretend world) you would rinse and repeat for all systems you'll have an account on. Your `~/.ssh/config` file will be handy here as you collect dozens of systems that you have access to. Setting up what private key goes to what system and what that system's IP / hostname is so you don't have to keep it all in your head.
 
 - **Resources**
@@ -86,7 +87,7 @@ Without practice, `ssh` connections and authentication just seem like magic. Rea
 
 Note: this part is last because you are most likely to break something.
 
-1. Given a subnet range, provide the network prefix + CIDR notation of the subnet range. For example: Subnet range: `10.0.0.0 - 10.0.1.255` Would be written as `10.0.0.0/23` OR `10.0.1.0/23`
+1. Given a subnet range, provide the network prefix + CIDR notation of the subnet range. For example: Subnet range: `10.0.0.0 - 10.0.1.255` Would be written as `10.0.0.0/23` OR `10.0.1.0/23`. See a [breakdown here](#Range-of-IPs-to-network-ip-+-CIDR)
    - Subnet range for Wright State IPs: `130.108.0.0 - 130.108.255.255`
    - Subnet range for AWS public subnet: `10.0.0.0 - 10.0.0.255`
    - Subnet range for your home public IP: `your_public_ip - your_public_ip`
@@ -96,7 +97,7 @@ Note: this part is last because you are most likely to break something.
    - **If you used `iptables`**, write the commands you used. Include a **screenshot** of your rules once they are in place
      - `iptables` notes:
        - `iptables` are chain based - enable a rule that will keep you connected first
-       - `drop` all traffic that does not meet the allowed traffic rules.
+       - `drop` all traffic to port 22 that does not meet the allowed traffic rules.
        - Do **NOT** `save` these rules. Just type them out - if something breaks, you can [reboot your instance from the AWS console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:) and the iptables will be flushed. If you `save`, well, you could permanently lock yourself out of say, port 22 (SSH).
    - **If you used Security Groups**, remove rules that enable access from any port from any IP address - your rules should be the only ones in place. Include a **screenshot** of your rules once they are in place
 4. Confirm you can still `ssh` in to your AWS instance. What would be an invalid IP or network?
@@ -162,3 +163,22 @@ Q. I used `iptables`, and enabled rules in the wrong order (I was forcefully dis
 A. [Reboot your AWS instance](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:) by going to your list of instances. Select the instance you want to reboot, then select Instance State -> Reboot Instance
 
 - Note: this will only "save" you if you did not `save` your `iptables` rules.
+
+## Range of IPs to network ip + CIDR
+
+1. Translate addresses to binary
+2. Set 1's for the matching bits until there is a mismatch - these are the network bits. Remaining bits are 0's - these are the host bits
+3. Add up the total number of 1's
+
+|                          |                                      |
+| ------------------------ | ------------------------------------ |
+| 10.0.0.0                 | 00001010.00000000.00000000.000000000 |
+| 10.0.1.255               | 00001010.00000000.00000001.111111111 |
+| 1's match (network bits) | 11111111.11111111.11111110.00000000  |
+| Subnet mask (base 10)    | 255.255.254.0                        |
+| CIDR                     | /23                                  |
+| Final form:              | 10.0.0.0/23 OR 10.0.1.0/23           |
+
+Helpful resource:
+
+- [CCExpert - Using Prefixes to Represent a Subnet Mask](https://www.ccexpert.us/network-design/using-prefixes-to-represent-a-subnet-mask.html)
